@@ -1,0 +1,53 @@
+{
+  "id": "soso.app",
+  "name": "soso应用订阅",
+  "author": "@soso",
+  "icon": "https://avatars0.githubusercontent.com/u/213085100?s=52&v=4",
+  "repo": "https://github.com/liumingIt331/scripts01",
+  "apps": [
+    {
+      "id": "youth",
+      "name": "中青多账号管理",
+      "keys": [
+        "cookiesMap",
+        "currentAccIndex"
+      ],
+      "settings": [
+        {
+          "id": "notifytimes",
+          "name": "通知频率 (点击查看设置说明)",
+          "val": "",
+          "type": "number",
+          "desc": "设定通知频率，前三次为全部通知，之后转盘次数/设定频率整除时通知，如设置0为无通知，设置1为全部通知，设置其他数可整除余0时通知，默认值50"
+        },
+        {
+          "id": "zqlogs",
+          "name": "调试日志",
+          "val": false,
+          "type": "boolean",
+          "desc": "调试日志开关，默认关闭"
+        },
+        {
+          "id": "currentAccIndex",
+          "name": "当前账号序号",
+          "val": "1",
+          "type": "number",
+          "desc": "需要获取第几个账号的Cookie就填写对应的数字，如第1个账号填写1，第2个账号就填写2，依次类推(默认从1开始)。"
+        },
+        {
+          "id": "cookiesMap",
+          "name": "cookies数据",
+          "val": "",
+          "type": "textarea",
+          "desc": "cookies数据，通过脚本获取（包含了youthheader_zq、read_zq、red_zq、readtime_zq）"
+        }
+      ],
+      "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/youth.js",
+      "icons": [
+        "https://raw.githubusercontent.com/Orz-3/mini/master/youth.png",
+        "https://raw.githubusercontent.com/Orz-3/task/master/youth.png"
+      ],
+      "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/youth.js"
+    }
+  ]
+}
