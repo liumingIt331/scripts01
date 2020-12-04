@@ -152,7 +152,12 @@ cookiesMapPersistent.forEach(function (value, key, map) {
 
 
 function GetCookie(accIndex) {
-    let cookiesMap = getCookiesMap(cookiesMapJson) || new Map();
+    let cookiesMap;
+    if (!cookiesMapJson) {
+        cookiesMap = getCookiesMap(cookiesMapJson);
+    } else {
+        cookiesMap = new Map();
+    }
 
     let cookieObj = cookiesMap.get(accIndex) || {"youthheader_zq": "", "read_zq": "", "readtime_zq": "", "red_zq": ""};
 
