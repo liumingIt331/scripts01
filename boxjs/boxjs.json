@@ -10,8 +10,7 @@
       "name": "中青多账号管理",
       "author": "@soso",
       "keys": [
-        "cookiesMap",
-        "currentAccIndex"
+        "cookiesMap"
       ],
       "settings": [
         {
