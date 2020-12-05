@@ -145,12 +145,12 @@ let opboxtime;
         await rotary();
         await rotaryCheck();
         await earningsInfo();
+        await showmsg();
+        if ($.isNode() && rotaryres.code !== '10010')
+            if (rotarytimes && rotarytimes % 50 == 0 && cash >= 10) {
+                await notify.sendNotify($.name + " " + nick, "您的余额约为" + cash + "元，已可以提现" + '\n' + `【收益总计】${signinfo.data.user.score}青豆  现金约${cash}元\n${detail}`)
+            }
     }
-    await showmsg();
-    if ($.isNode() && rotaryres.code !== '10010')
-        if (rotarytimes && rotarytimes % 50 == 0 && cash >= 10) {
-            await notify.sendNotify($.name + " " + nick, "您的余额约为" + cash + "元，已可以提现" + '\n' + `【收益总计】${signinfo.data.user.score}青豆  现金约${cash}元\n${detail}`)
-        }
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
