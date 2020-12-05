@@ -84,10 +84,6 @@ let cookiesArr = [], signheaderVal = '',
     redpArr = [], redpbodyVal = '',
     detail = ``, subTitle = ``;
 
-const firstcheck = $.getdata('signt');
-const runtimes = $.getdata('times');
-const opboxtime = $.getdata('opbox');
-
 if (isGetCookie = typeof $request !== 'undefined') {
     GetCookie(currentAccIndex);
     $.done()
@@ -98,14 +94,18 @@ if (!cookiesJson) {
     return;
 }
 
-const cookiesJsonObj = JSON.parse(cookiesJson);
-for (const o in cookiesJsonObj) {
-    const value = cookiesJsonObj[o];
+let cookiesJsonObj = JSON.parse(cookiesJson);
+for (let o in cookiesJsonObj) {
+    let value = cookiesJsonObj[o];
     cookiesArr.push(value.youthheader_zq);
     redpArr.push(value.red_zq);
     readArr.push(value.read_zq);
     timeArr.push(value.readtime_zq);
 }
+
+let firstcheck;
+let runtimes;
+let opboxtime;
 
 !(async () => {
     for (let i = 0; i < cookiesArr.length; i++) {
@@ -117,7 +117,12 @@ for (const o in cookiesJsonObj) {
             $.index = i + 1;
             console.log(`-------------------------\n\n开始【中青看点${$.index}】`)
         }
-        await sign();
+
+        firstcheck = $.getdata('signt' + $.index);
+        runtimes = $.getdata('times' + $.index);
+        opboxtime = $.getdata('opbox' + $.index);
+
+        await sign($.index);
         await signInfo();
         await friendsign();
         if ($.time('HH') > 12) {
@@ -196,7 +201,7 @@ function GetCookie(accIndex) {
     }
 }
 
-function sign() {
+function sign(index) {
     return new Promise((resolve, reject) => {
         const signurl = {
             url: 'https://kd.youth.cn/TaskCenter/sign',
@@ -212,15 +217,15 @@ function sign() {
             } else if (signres.status == 1) {
                 signresult = `【签到结果】成功 🎉 明日+${signres.nextScore} `
                 //detail = `【签到结果】成功 🎉 青豆: +${signres.score}，明日青豆: +${signres.nextScore}\n`
-                $.setdata(1, 'times')
+                $.setdata(1, 'times' + index)
                 if (firstcheck == undefined || firstcheck != date) {
-                    $.setdata(date, 'signt');
+                    $.setdata(date, 'signt' + index);
                 }
             } else if (signres.status == 0) {
                 signresult = `【签到结果】重复`;
                 detail = "";
                 if (runtimes !== undefined) {
-                    $.setdata(`${parseInt(runtimes) + 1}`, 'times')
+                    $.setdata(`${parseInt(runtimes) + 1}`, 'times' + index)
                 }
             }
             resolve()
