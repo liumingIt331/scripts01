@@ -164,8 +164,8 @@ function GetCookie(accIndex) {
             cookiesJsonObj[accIndex] = cookieObj;
             $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
         }
-        $.log(`${$.name} 获取Cookie: 成功,signheaderVal: ${signheaderVal}`)
-        $.msg($.name, `获取Cookie: 成功🎉`, ``)
+        $.log(`${$.name}账号${accIndex} 获取Cookie: 成功,signheaderVal: ${signheaderVal}`)
+        $.msg($.name `账号${accIndex}`, `获取Cookie: 成功🎉`, ``)
     } else if ($request && $request.method != `OPTIONS` && $request.url.match(/\/article\/complete/)) {
         const articlebodyVal = $request.body
         if (articlebodyVal) {
@@ -173,8 +173,8 @@ function GetCookie(accIndex) {
             cookiesJsonObj[accIndex] = cookieObj;
             $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
         }
-        $.log(`${$.name} 获取阅读: 成功,articlebodyVal: ${articlebodyVal}`)
-        $.msg($.name, `获取阅读请求: 成功🎉`, ``)
+        $.log(`${$.name}账号${accIndex} 获取阅读: 成功,articlebodyVal: ${articlebodyVal}`)
+        $.msg($.name `账号${accIndex}` , `获取阅读请求: 成功🎉`, ``)
     } else if ($request && $request.method != `OPTIONS` && $request.url.match(/\/v5\/user\/app_stay/)) {
         const timebodyVal = $request.body
         if (timebodyVal) {
@@ -182,8 +182,8 @@ function GetCookie(accIndex) {
             cookiesJsonObj[accIndex] = cookieObj;
             $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
         }
-        $.log(`${$.name} 获取阅读: 成功,timebodyVal: ${timebodyVal}`)
-        $.msg($.name, `获取阅读时长: 成功🎉`, ``)
+        $.log(`${$.name}账号${accIndex} 获取阅读: 成功,timebodyVal: ${timebodyVal}`)
+        $.msg($.name `账号${accIndex}`, `获取阅读时长: 成功🎉`, ``)
     } else if ($request && $request.method != `OPTIONS` && $request.url.match(/\/article\/red_packet/)) {
         const redpbodyVal = $request.body
         if (redpbodyVal) {
@@ -191,8 +191,8 @@ function GetCookie(accIndex) {
             cookiesJsonObj[accIndex] = cookieObj;
             $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
         }
-        $.log(`${$.name} 获取惊喜红包: 成功,redpbodyVal: ${redpbodyVal}`)
-        $.msg($.name, `获取惊喜红包请求: 成功🎉`, ``)
+        $.log(`${$.name}账号${accIndex} 获取惊喜红包: 成功,redpbodyVal: ${redpbodyVal}`)
+        $.msg($.name `账号${accIndex}`, `获取惊喜红包请求: 成功🎉`, ``)
     }
 }
 

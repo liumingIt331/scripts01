@@ -6,7 +6,7 @@
   "repo": "https://github.com/liumingIt331/scripts01",
   "apps": [
     {
-      "id": "youth",
+      "id": "youth_multiple",
       "name": "中青多账号管理",
       "author": "@soso",
       "keys": [
