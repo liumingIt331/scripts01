@@ -10,7 +10,7 @@
       "name": "中青多账号管理",
       "author": "@soso",
       "keys": [
-        "cookiesMap"
+        "cookiesJson"
       ],
       "settings": [
         {
@@ -35,7 +35,7 @@
           "desc": "需要获取第几个账号的Cookie就填写对应的数字，如第1个账号填写1，第2个账号就填写2，依次类推(默认从1开始)。"
         },
         {
-          "id": "cookiesMap",
+          "id": "cookiesJson",
           "name": "cookies数据",
           "val": "",
           "type": "textarea",

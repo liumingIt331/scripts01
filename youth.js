@@ -76,7 +76,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 let logs = $.getdata('zqlogs') || false, signresult;
 
 let currentAccIndex = $.getdata('currentAccIndex') || "1"; // 默认账号一
-let cookiesMapJson = $.getdata('cookiesMap');
+let cookiesJson = $.getdata('cookiesJson');
 
 let cookiesArr = [], signheaderVal = '',
     readArr = [], articlebodyVal = '',
@@ -93,19 +93,19 @@ if (isGetCookie = typeof $request !== 'undefined') {
     $.done()
 }
 
-if (!cookiesMapJson) {
+if (!cookiesJson) {
     $.msg($.name, '【提示】请先获取中青看点一cookie')
     return;
 }
 
-let cookiesMapPersistent = getCookiesMap(cookiesMapJson);
-cookiesMapPersistent.forEach(function (value, key, map) {
+const cookiesJsonObj = JSON.parse(cookiesJson);
+for (const o in cookiesJsonObj) {
+    const value = cookiesJsonObj[o];
     cookiesArr.push(value.youthheader_zq);
     redpArr.push(value.red_zq);
     readArr.push(value.read_zq);
     timeArr.push(value.readtime_zq);
-})
-
+}
 
 !(async () => {
     for (let i = 0; i < cookiesArr.length; i++) {
@@ -152,21 +152,17 @@ cookiesMapPersistent.forEach(function (value, key, map) {
 
 
 function GetCookie(accIndex) {
-    let cookiesMap;
-    if (!cookiesMapJson) {
-        cookiesMap = getCookiesMap(cookiesMapJson);
-    } else {
-        cookiesMap = new Map();
-    }
 
-    let cookieObj = cookiesMap.get(accIndex) || {"youthheader_zq": "", "read_zq": "", "readtime_zq": "", "red_zq": ""};
+    let cookiesJsonObj = cookiesJson ? JSON.parse(cookiesJson) : {};
+
+    let cookieObj = cookiesJsonObj[accIndex] || {"youthheader_zq": "", "read_zq": "", "readtime_zq": "", "red_zq": ""};
 
     if ($request && $request.method != `OPTIONS` && $request.url.match(/\/TaskCenter\/(sign|getSign)/)) {
         const signheaderVal = JSON.stringify($request.headers)
         if (signheaderVal) {
             cookieObj.youthheader_zq = signheaderVal;
-            cookiesMap.set(accIndex, cookieObj);
-            $.setdata(cookiesMap, 'cookiesMap')
+            cookiesJsonObj[accIndex] = cookieObj;
+            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
         }
         $.log(`${$.name} 获取Cookie: 成功,signheaderVal: ${signheaderVal}`)
         $.msg($.name, `获取Cookie: 成功🎉`, ``)
@@ -174,8 +170,8 @@ function GetCookie(accIndex) {
         const articlebodyVal = $request.body
         if (articlebodyVal) {
             cookieObj.read_zq = articlebodyVal;
-            cookiesMap.set(accIndex, cookieObj);
-            $.setdata(cookiesMap, 'cookiesMap')
+            cookiesJsonObj[accIndex] = cookieObj;
+            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
         }
         $.log(`${$.name} 获取阅读: 成功,articlebodyVal: ${articlebodyVal}`)
         $.msg($.name, `获取阅读请求: 成功🎉`, ``)
@@ -183,8 +179,8 @@ function GetCookie(accIndex) {
         const timebodyVal = $request.body
         if (timebodyVal) {
             cookieObj.readtime_zq = timebodyVal;
-            cookiesMap.set(accIndex, cookieObj);
-            $.setdata(cookiesMap, 'cookiesMap')
+            cookiesJsonObj[accIndex] = cookieObj;
+            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
         }
         $.log(`${$.name} 获取阅读: 成功,timebodyVal: ${timebodyVal}`)
         $.msg($.name, `获取阅读时长: 成功🎉`, ``)
@@ -192,8 +188,8 @@ function GetCookie(accIndex) {
         const redpbodyVal = $request.body
         if (redpbodyVal) {
             cookieObj.red_zq = redpbodyVal;
-            cookiesMap.set(accIndex, cookieObj);
-            $.setdata(cookiesMap, 'cookiesMap')
+            cookiesJsonObj[accIndex] = cookieObj;
+            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
         }
         $.log(`${$.name} 获取惊喜红包: 成功,redpbodyVal: ${redpbodyVal}`)
         $.msg($.name, `获取惊喜红包请求: 成功🎉`, ``)
@@ -713,16 +709,6 @@ async function showmsg() {
     } else {
         console.log(`【收益总计】${signinfo.data.user.score}青豆  现金约${cash}元\n` + detail)
     }
-}
-
-
-function getCookiesMap(jsonStr){
-    var obj = JSON.parse(jsonStr);
-    let strMap = new Map();
-    for (let k of Object.keys(obj)) {
-        strMap.set(k,obj[k]);
-    }
-    return strMap;
 }
 
 function Env(t, e) {
