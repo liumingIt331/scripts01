@@ -86,7 +86,8 @@ let cookiesArr = [], signheaderVal = '',
 
 if (isGetCookie = typeof $request !== 'undefined') {
     GetCookie(currentAccIndex);
-    $.done()
+    $.done();
+    return;
 }
 
 if (!cookiesJson) {
