@@ -87,7 +87,6 @@ let cookiesArr = [], signheaderVal = '',
 if (isGetCookie = typeof $request !== 'undefined') {
     GetCookie(currentAccIndex);
     $.done();
-    return;
 }
 
 if (!cookiesJson) {
@@ -181,7 +180,7 @@ function GetCookie(accIndex) {
         }
         $.log(`${$.name}账号${accIndex} 获取阅读: 成功,articlebodyVal: ${articlebodyVal}`)
         $.msg($.name, `账号${accIndex} 获取阅读请求: 成功🎉`, ``)
-    } else if ($request && $request.method != `OPTIONS` && $request.url.match(/\/v5\/user\/app_stay/)) {
+    } else if ($request && $request.method != `OPTIONS` && $request.url.match(/\/v5\/user\/stay/)) {
         const timebodyVal = $request.body
         if (timebodyVal) {
             cookieObj.readtime_zq = timebodyVal;
