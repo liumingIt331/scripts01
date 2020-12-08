@@ -42,12 +42,74 @@
           "desc": "cookies数据，通过脚本获取（包含了youthheader_zq、read_zq、red_zq、readtime_zq）"
         }
       ],
-      "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/youth.js",
+      "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/quantumultX/youth.js",
       "icons": [
         "https://raw.githubusercontent.com/Orz-3/mini/master/youth.png",
         "https://raw.githubusercontent.com/Orz-3/task/master/youth.png"
       ],
-      "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/youth.js"
+      "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/quantumultX/youth.js"
+    },
+    {
+      "id": "qqreads_multiple",
+      "name": "企鹅阅读多账号管理",
+      "author": "@soso",
+      "keys": [
+        "cookiesJson"
+      ],
+      "settings": [
+        {
+          "id": "notifyInterval",
+          "name": "通知频率",
+          "val": "1",
+          "type": "radio",
+          "desc": "设定通知频率，0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每15次通知一次",
+          "items": [
+            {
+              "key": "0",
+              "label": "关闭通知"
+            },
+            {
+              "key": "1",
+              "label": "所有通知"
+            },
+            {
+              "key": "2",
+              "label": "宝箱领取成功通知"
+            },
+            {
+              "key": "3",
+              "label": "宝箱每15次通知一次"
+            }
+          ]
+        },
+        {
+          "id": "logs",
+          "name": "调试日志",
+          "val": false,
+          "type": "boolean",
+          "desc": "调试日志开关，默认关闭"
+        },
+        {
+          "id": "currentAccIndex",
+          "name": "当前账号序号",
+          "val": "1",
+          "type": "number",
+          "desc": "需要获取第几个账号的Cookie就填写对应的数字，如第1个账号填写1，第2个账号就填写2，依次类推(默认从1开始)。"
+        },
+        {
+          "id": "cookiesJson",
+          "name": "cookies数据",
+          "val": "",
+          "type": "textarea",
+          "desc": "cookies数据，通过脚本获取（qqreadtimeurl、qqreadtimehd、qqreadbd）"
+        }
+      ],
+      "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/quantumultX/qqreads.js",
+      "icons": [
+        "https://raw.githubusercontent.com/Orz-3/mini/master/QQ.png",
+        "https://raw.githubusercontent.com/Orz-3/task/master/QQ.png"
+      ],
+      "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/quantumultX/qqreads.js"
     }
   ]
 }
