@@ -2,6 +2,14 @@
  * 本脚本在 Sunert 大佬的脚本基础上做修改
  * 原脚本地址：https://raw.githubusercontent.com/Sunert/Scripts/master/Task/youth.js
  * 仅供学习交流
+ *
+ * 食用说明
+ *
+ * 对应boxjs订阅地址：https://raw.githubusercontent.com/liumingIt331/scripts01/master/boxjs/boxjs.json
+ * 详细阅读说明
+ * 1.当前账号序号那里填账号的序号，比如要获取1账号的cookie就填1
+ * 2.填完保存设置，打开中青去获取ck
+ * 3.多账号依次获取
  */
 
 
