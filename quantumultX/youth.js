@@ -10,6 +10,12 @@
  * 1.当前账号序号那里填账号的序号，比如要获取1账号的cookie就填1
  * 2.填完保存设置，打开中青去获取ck
  * 3.多账号依次获取
+ *
+ * [rewrite_local]
+    https:\/\/\w+\.youth\.cn\/TaskCenter\/(sign|getSign) url script-request-header youth.js
+    https?:\/\/ios\.baertt\.com\/v5\/article\/complete url script-request-body youth.js
+    https:\/\/ios\.baertt\.com\/v5\/article\/red_packet url script-request-body youth.js
+    https:\/\/ios\.baertt\.com\/v5\/user\/stay\.json url script-request-body youth.js
  */
 
 
