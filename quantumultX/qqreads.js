@@ -212,33 +212,33 @@ function GetCookie(accIndex) {
         if (qqreadtimeurlVal) {
             cookieObj.qqreadtimeurl = qqreadtimeurlVal;
             cookiesJsonObj[accIndex] = cookieObj;
-            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
+            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesQQ')
         }
         $.log(
-            `[${jsname}] 获取时长url: 成功,qqreadtimeurlVal: ${qqreadtimeurlVal}`
+            `[${jsname}] 账号${accIndex}获取时长url: 成功,qqreadtimeurlVal: ${qqreadtimeurlVal}`
         );
-        $.msg(jsname, `获取时长url: 成功🎉`, ``);
+        $.msg(jsname, `账号${accIndex}获取时长url: 成功🎉`, ``);
         const qqreadtimeheaderVal = JSON.stringify($request.headers);
         if (qqreadtimeheaderVal){
             cookieObj.qqreadtimehd = qqreadtimeheaderVal;
             cookiesJsonObj[accIndex] = cookieObj;
-            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
+            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesQQ')
         }
         $.log(
-            `[${jsname}] 获取时长header: 成功,qqreadtimeheaderVal: ${qqreadtimeheaderVal}`
+            `[${jsname}] 账号${accIndex}获取时长header: 成功,qqreadtimeheaderVal: ${qqreadtimeheaderVal}`
         );
-        $.msg(jsname, `获取时长header: 成功🎉`, ``);
+        $.msg(jsname, ` 账号${accIndex}获取时长header: 成功🎉`, ``);
     } else if ($request && $request.body.indexOf("bookDetail_bottomBar_read_C") >= 0 && $request.body.indexOf("bookRead_show_I") >= 0 && $request.body.indexOf("topBar_left_back_C") < 0 && $request.body.indexOf("bookRead_dropOut_shelfYes_C") < 0) {
         const qqreadbodyVal = $request.body;
         if (qqreadbodyVal) {
             cookieObj.qqreadbd = qqreadbodyVal;
             cookiesJsonObj[accIndex] = cookieObj;
-            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
+            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesQQ')
         }
         $.log(
-            `[${jsname}] 获取更新body: 成功,qqreadbodyVal: ${qqreadbodyVal}`
+            `[${jsname}] 账号${accIndex}获取更新body: 成功,qqreadbodyVal: ${qqreadbodyVal}`
         );
-        $.msg(jsname, `获取更新body: 成功🎉`, ``);
+        $.msg(jsname, `账号${accIndex}获取更新body: 成功🎉`, ``);
 
     }
 
