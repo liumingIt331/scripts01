@@ -164,11 +164,6 @@ let opboxtime;
 
 
 function GetCookie(accIndex) {
-
-    let cookiesJsonObj = cookiesJson ? JSON.parse(cookiesJson) : {};
-
-    let cookieObj = cookiesJsonObj[accIndex] || {"youthheader_zq": "", "read_zq": "", "": "", "red_zq": ""};
-
     if ($request && $request.method != `OPTIONS` && $request.url.match(/\/TaskCenter\/(sign|getSign)/)) {
         const signheaderVal = JSON.stringify($request.headers)
         if (signheaderVal) $.setdata(signheaderVal, 'youthheader_zq' + accIndex)
