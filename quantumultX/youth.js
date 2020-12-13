@@ -123,6 +123,8 @@ let opboxtime;
             redpbodyVal = redpArr[i];
             $.index = i + 1;
             console.log(`-------------------------\n\n开始【中青看点${$.index}】`)
+        } else {
+            break;
         }
 
         firstcheck = $.getdata('signt' + $.index);
