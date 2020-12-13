@@ -7,7 +7,7 @@
  *
  * 对应boxjs订阅地址：https://raw.githubusercontent.com/liumingIt331/scripts01/master/boxjs/boxjs.json
  * 详细阅读说明
- * 1.当前账号序号那里填账号的序号，比如要获取1账号的cookie就填1
+ * 1.当前账号序号那里填账号的序号，比如要获取1账号的cookie就填1；填写账号总数
  * 2.填完保存设置，打开中青去获取ck
  * 3.多账号依次获取
  *
@@ -90,7 +90,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 let logs = $.getdata('zqlogs') || false, signresult;
 
 let currentAccIndex = $.getdata('currentAccIndex') || "1"; // 默认账号一
-let cookiesJson = $.getdata('cookiesJson');
+let totalAcc = $.getdata('totalAcc') || "1"; // 账号总数
 
 let cookiesArr = [], signheaderVal = '',
     readArr = [], articlebodyVal = '',
@@ -103,18 +103,11 @@ if (isGetCookie = typeof $request !== 'undefined') {
     $.done();
 }
 
-if (!cookiesJson) {
-    $.msg($.name, '【提示】请先获取中青看点一cookie')
-    return;
-}
-
-let cookiesJsonObj = JSON.parse(cookiesJson);
-for (let o in cookiesJsonObj) {
-    let value = cookiesJsonObj[o];
-    cookiesArr.push(value.youthheader_zq);
-    redpArr.push(value.red_zq);
-    readArr.push(value.read_zq);
-    timeArr.push(value.readtime_zq);
+for (let i = 1; i <= totalAcc; i++) {
+    cookiesArr.push($.getdata('youthheader_zq' + i));
+    redpArr.push($.getdata('red_zq' + i));
+    readArr.push($.getdata('read_zq' + i));
+    timeArr.push($.getdata('readtime_zq' + i));
 }
 
 let firstcheck;
@@ -150,7 +143,7 @@ let opboxtime;
         }
         await SevCont();
         await ArticleShare();
-        await openbox();
+        await openbox($.index);
         await getAdVideo();
         await gameVideo();
         await readArticle();
@@ -174,42 +167,26 @@ function GetCookie(accIndex) {
 
     let cookiesJsonObj = cookiesJson ? JSON.parse(cookiesJson) : {};
 
-    let cookieObj = cookiesJsonObj[accIndex] || {"youthheader_zq": "", "read_zq": "", "readtime_zq": "", "red_zq": ""};
+    let cookieObj = cookiesJsonObj[accIndex] || {"youthheader_zq": "", "read_zq": "", "": "", "red_zq": ""};
 
     if ($request && $request.method != `OPTIONS` && $request.url.match(/\/TaskCenter\/(sign|getSign)/)) {
         const signheaderVal = JSON.stringify($request.headers)
-        if (signheaderVal) {
-            cookieObj.youthheader_zq = signheaderVal;
-            cookiesJsonObj[accIndex] = cookieObj;
-            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
-        }
+        if (signheaderVal) $.setdata(signheaderVal, 'youthheader_zq' + accIndex)
         $.log(`${$.name}账号${accIndex} 获取Cookie: 成功,signheaderVal: ${signheaderVal}`)
         $.msg($.name, `账号${accIndex} 获取Cookie: 成功🎉`, ``)
     } else if ($request && $request.method != `OPTIONS` && $request.url.match(/\/article\/complete/)) {
         const articlebodyVal = $request.body
-        if (articlebodyVal) {
-            cookieObj.read_zq = articlebodyVal;
-            cookiesJsonObj[accIndex] = cookieObj;
-            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
-        }
+        if (articlebodyVal) $.setdata(articlebodyVal, 'read_zq' + accIndex)
         $.log(`${$.name}账号${accIndex} 获取阅读: 成功,articlebodyVal: ${articlebodyVal}`)
         $.msg($.name, `账号${accIndex} 获取阅读请求: 成功🎉`, ``)
     } else if ($request && $request.method != `OPTIONS` && $request.url.match(/\/v5\/user\/stay/)) {
         const timebodyVal = $request.body
-        if (timebodyVal) {
-            cookieObj.readtime_zq = timebodyVal;
-            cookiesJsonObj[accIndex] = cookieObj;
-            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
-        }
+        if (timebodyVal) $.setdata(timebodyVal, 'readtime_zq' + accIndex)
         $.log(`${$.name}账号${accIndex} 获取阅读: 成功,timebodyVal: ${timebodyVal}`)
         $.msg($.name, `账号${accIndex} 获取阅读时长: 成功🎉`, ``)
     } else if ($request && $request.method != `OPTIONS` && $request.url.match(/\/article\/red_packet/)) {
         const redpbodyVal = $request.body
-        if (redpbodyVal) {
-            cookieObj.red_zq = redpbodyVal;
-            cookiesJsonObj[accIndex] = cookieObj;
-            $.setdata(JSON.stringify(cookiesJsonObj), 'cookiesJson')
-        }
+        if (redpbodyVal) $.setdata(redpbodyVal, 'red_zq' + accIndex)
         $.log(`${$.name}账号${accIndex} 获取惊喜红包: 成功,redpbodyVal: ${redpbodyVal}`)
         $.msg($.name, `账号${accIndex} 获取惊喜红包请求: 成功🎉`, ``)
     }
@@ -387,7 +364,7 @@ function ArticleShare() {
 
 
 //开启时段宝箱
-function openbox() {
+function openbox(index) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const url = {
@@ -398,7 +375,7 @@ function openbox() {
                 boxres = JSON.parse(data)
                 if (boxres.code == 1) {
                     boxretime = boxres.data.time
-                    $.setdata(boxretime, 'opbox')
+                    $.setdata(boxretime, 'opbox' + index)
                     detail += `【开启宝箱】+${boxres.data.score}青豆 下次奖励${boxres.data.time / 60}分钟\n`
                     await boxshare();
                 } else {

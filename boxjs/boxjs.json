@@ -10,7 +10,26 @@
       "name": "中青多账号管理",
       "author": "@soso",
       "keys": [
-        "cookiesJson"
+        "youthheader_zq1",
+        "red_zq1",
+        "read_zq1",
+        "readtime_zq1",
+        "youthheader_zq2",
+        "red_zq2",
+        "read_zq2",
+        "readtime_zq2",
+        "youthheader_zq3",
+        "red_zq3",
+        "read_zq3",
+        "readtime_zq3",
+        "youthheader_zq4",
+        "red_zq4",
+        "read_zq4",
+        "readtime_zq4",
+        "youthheader_zq5",
+        "red_zq5",
+        "read_zq5",
+        "readtime_zq5"
       ],
       "settings": [
         {
@@ -35,11 +54,11 @@
           "desc": "需要获取第几个账号的Cookie就填写对应的数字，如第1个账号填写1，第2个账号就填写2，依次类推(默认从1开始)。"
         },
         {
-          "id": "cookiesJson",
-          "name": "cookies数据",
-          "val": "",
-          "type": "textarea",
-          "desc": "cookies数据，通过脚本获取（包含了youthheader_zq、read_zq、red_zq、readtime_zq）"
+          "id": "totalAcc",
+          "name": "账号总数",
+          "val": "1",
+          "type": "number",
+          "desc": "总共有几个账号，填写数字。"
         }
       ],
       "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/quantumultX/youth.js",
