@@ -37,7 +37,7 @@ jobs:
         if: env.QQREAD_TIMEHD
         run: |
           cd ~/scripts01
-          node Task/qqreads.js
+          node Task/youth.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
