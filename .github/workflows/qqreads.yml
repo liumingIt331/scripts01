@@ -21,6 +21,7 @@ jobs:
 
     steps:
       - name: Checkout
+        uses: actions/checkout@v2
         run: |
           git clone https://github.com/liumingIt331/scripts01.git ~/scripts01
       - name: Use Node.js 12.x
@@ -36,7 +37,7 @@ jobs:
         if: env.QQREAD_TIMEHD
         run: |
           cd ~/scripts01
-          node quantumultX/qqreads.js
+          node Task/qqreads.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
