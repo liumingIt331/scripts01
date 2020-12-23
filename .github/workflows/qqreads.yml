@@ -21,7 +21,6 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
         run: |
           git clone https://github.com/liumingIt331/scripts01.git ~/scripts01
       - name: Use Node.js 12.x
