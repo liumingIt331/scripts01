@@ -65,7 +65,7 @@ hostname = *.youth.cn, ios.baertt.com
 ~~~~~~~~~~~~~~~~
 
 */
-
+let COOKIES_SPLIT = "\n"; // 自定义多cookie之间连接的分隔符，默认为\n换行分割，不熟悉的不要改动和配置，为了兼容本地node执行
 let s = 200 //各数据接口延迟
 const $ = new Env("中青看点")
 let notifyInterval = $.getdata("notifytimes") || 50 //通知间隔，默认抽奖每50次通知一次，如需关闭全部通知请设为0
@@ -80,29 +80,38 @@ let cookiesArr = [], signheaderVal = '',
 let CookieYouth = [], ARTBODYs = [],
     REDBODYs = [], READTIME = [];
 if ($.isNode()) {
-    if (process.env.YOUTH_HEADER && process.env.YOUTH_HEADER.indexOf('#') > -1) {
-        CookieYouth = process.env.YOUTH_HEADER.split('#');
+    if (process.env.COOKIES_SPLIT) {
+        COOKIES_SPLIT = process.env.COOKIES_SPLIT;
+    }
+    console.log(
+        `============ cookies分隔符为：${JSON.stringify(
+            COOKIES_SPLIT
+        )} =============\n`
+    );
+
+    if (process.env.YOUTH_HEADER && process.env.YOUTH_HEADER.indexOf(COOKIES_SPLIT) > -1) {
+        CookieYouth = process.env.YOUTH_HEADER.split(COOKIES_SPLIT);
     } else {
         CookieYouth = process.env.YOUTH_HEADER.split()
     }
     ;
 
-    if (process.env.YOUTH_ARTBODY && process.env.YOUTH_ARTBODY.indexOf('&') > -1) {
-        ARTBODYs = process.env.YOUTH_ARTBODY.split('&');
+    if (process.env.YOUTH_ARTBODY && process.env.YOUTH_ARTBODY.indexOf(COOKIES_SPLIT) > -1) {
+        ARTBODYs = process.env.YOUTH_ARTBODY.split(COOKIES_SPLIT);
     } else {
         ARTBODYs = process.env.YOUTH_ARTBODY.split()
     }
     ;
 
-    if (process.env.YOUTH_REDBODY && process.env.YOUTH_REDBODY.indexOf('&') > -1) {
-        REDBODYs = process.env.YOUTH_REDBODY.split('&');
+    if (process.env.YOUTH_REDBODY && process.env.YOUTH_REDBODY.indexOf(COOKIES_SPLIT) > -1) {
+        REDBODYs = process.env.YOUTH_REDBODY.split(COOKIES_SPLIT);
     } else {
         REDBODYs = process.env.YOUTH_REDBODY.split()
     }
     ;
 
-    if (process.env.YOUTH_TIME && process.env.YOUTH_TIME.indexOf('&') > -1) {
-        READTIME = process.env.YOUTH_TIME.split('&');
+    if (process.env.YOUTH_TIME && process.env.YOUTH_TIME.indexOf(COOKIES_SPLIT) > -1) {
+        READTIME = process.env.YOUTH_TIME.split(COOKIES_SPLIT);
     } else {
         READTIME = process.env.YOUTH_TIME.split()
     }
