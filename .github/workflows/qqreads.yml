@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/liumingIt331/scripts01.git ~/JavaScript
+          git clone https://github.com/liumingIt331/scripts01.git ~/scripts01
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -30,12 +30,12 @@ jobs:
       - name: npm install
         if: env.QQREAD_TIMEHD
         run: |
-          cd ~/JavaScript
+          cd ~/scripts01
           npm install
       - name: '运行 【企鹅读书】'
         if: env.QQREAD_TIMEHD
         run: |
-          cd ~/JavaScript
+          cd ~/scripts01
           node quantumultX/qqreads.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
