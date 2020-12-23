@@ -578,7 +578,7 @@ function readArticle() {
         }
         $.post(url, (error, response, data) => {
             readres = JSON.parse(data);
-          console.log(`阅读返回：${data}`)
+            console.log(`阅读返回：${data}`)
             if (readres.error_code === "0" && readres.items.read_score && typeof readres.items.read_score === 'number') {
                 detail += `【阅读奖励】+${readres.items.read_score}个青豆\n`;
             }
@@ -626,6 +626,7 @@ function readTime() {
         }
         $.post(url, (error, response, data) => {
             let timeres = JSON.parse(data)
+            console.log(`阅读时长返回：${data}`)
             if (timeres.error_code == 0) {
                 readtimes = timeres.time / 60
                 detail += `【阅读时长】共计` + Math.floor(readtimes) + `分钟\n`
