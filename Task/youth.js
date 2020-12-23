@@ -579,7 +579,7 @@ function readArticle() {
         $.post(url, (error, response, data) => {
             readres = JSON.parse(data);
           console.log(`阅读返回：${data}`)
-            if (readres.items.read_score && typeof readres.items.read_score === 'number') {
+            if (readres.error_code === "0" && readres.items.read_score && typeof readres.items.read_score === 'number') {
                 detail += `【阅读奖励】+${readres.items.read_score}个青豆\n`;
             }
             //else if (readres.items.max_notice == '\u770b\u592a\u4e45\u4e86\uff0c\u63621\u7bc7\u8bd5\u8bd5') {
