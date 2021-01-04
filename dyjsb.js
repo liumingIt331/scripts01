@@ -39,7 +39,7 @@ let isGetCookie = typeof $request !== 'undefined';
 let dyCurrentAccIndex = $.getdata('dyCurrentAccIndex') || "1"; // 默认账号一
 let dyTotalAcc = $.getdata('dyTotalAcc') || "1"; // 账号总数
 if (isGetCookie) {
-    GetCookie(dyCurrentAccIndex-1);
+    GetCookie(dyCurrentAccIndex);
     $.done()
 }
 if ($.isNode()) {
@@ -182,8 +182,8 @@ if ($.isNode()) {
     .finally(() => $.done())
 function GetCookie(dyCurrentAccIndex) {
     let prefix = '';
-    if (dyCurrentAccIndex > 0) {
-        prefix = dyCurrentAccIndex
+    if (dyCurrentAccIndex - 1 > 0) {
+        prefix = dyCurrentAccIndex - 1
     }
 
     if($request&&$request.url.indexOf("sign_in")>=0) {
