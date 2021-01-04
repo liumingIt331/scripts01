@@ -1,7 +1,7 @@
 /*
 赚京豆
 领豆,根据微信步数领京豆，每天运行一次即可
-更新地址：https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_kd.js
+更新地址：https://raw.githubusercontent.com/liumingIt331/scripts01/master/jd_zhuanjd.js
 
 已支持IOS双京东账号, Node.js支持N个京东账号
 
