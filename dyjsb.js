@@ -39,7 +39,7 @@ let isGetCookie = typeof $request !== 'undefined';
 let dyCurrentAccIndex = $.getdata('dyCurrentAccIndex') || "1"; // 默认账号一
 let dyTotalAcc = $.getdata('dyTotalAcc') || "1"; // 账号总数
 if (isGetCookie) {
-    GetCookie(dyCurrentAccIndex);
+    GetCookie(dyCurrentAccIndex-1);
     $.done()
 }
 if ($.isNode()) {
@@ -136,13 +136,19 @@ if ($.isNode()) {
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
     console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 } else {
-    for (let i = 1; i <= dyTotalAcc; i++) {
-        signheaderArr.push($.getdata(`signheader${i}`))
-        signcookieArr.push($.getdata(`signcookie${i}`))
-        stepheaderArr.push($.getdata(`stepheader${i}`))
-        stepkeyArr.push($.getdata(`stepkey${i}`))
-        readheaderArr.push($.getdata(`readheader${i}`))
-        readkeyArr.push($.getdata(`readkey${i}`))
+    signheaderArr.push($.getdata('signheader'))
+    signcookieArr.push($.getdata('signcookie'))
+    stepheaderArr.push($.getdata('stepheader'))
+    stepkeyArr.push($.getdata('stepkey'))
+    readheaderArr.push($.getdata('readheader'))
+    readkeyArr.push($.getdata('readkey'))
+    for (let i = 2; i <= dyTotalAcc; i++) {
+        signheaderArr.push($.getdata(`signheader${i-1}`))
+        signcookieArr.push($.getdata(`signcookie${i-1}`))
+        stepheaderArr.push($.getdata(`stepheader${i-1}`))
+        stepkeyArr.push($.getdata(`stepkey${i-1}`))
+        readheaderArr.push($.getdata(`readheader${i-1}`))
+        readkeyArr.push($.getdata(`readkey${i-1}`))
     }
 }
 !(async () => {
@@ -175,33 +181,38 @@ if ($.isNode()) {
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
 function GetCookie(dyCurrentAccIndex) {
+    let prefix = '';
+    if (dyCurrentAccIndex > 0) {
+        prefix = dyCurrentAccIndex
+    }
+
     if($request&&$request.url.indexOf("sign_in")>=0) {
         const signheader = $request.url.split(`?`)[1]
-        if (signheader) $.setdata(signheader,'signheader' + dyCurrentAccIndex)
+        if (signheader) $.setdata(signheader,'signheader' + prefix)
         $.log(`[${jsname}] 获取sign请求: 成功,signheader: ${signheader}`)
         $.msg(`获取signheader: 成功🎉`, ``)
         const signcookie = $request.headers['Cookie']
-        if(signcookie)        $.setdata(signcookie,'signcookie' + dyCurrentAccIndex)
+        if(signcookie)        $.setdata(signcookie,'signcookie' + prefix)
         $.log(`[${jsname}] 获取sign请求: 成功,signcookie: ${signcookie}`)
         $.msg(`获取signcookie: 成功🎉`, ``)
     }
     if($request&&$request.url.indexOf("step_submit")>=0) {
         const stepheader = $request.url.split(`?`)[1]
-        if (stepheader) $.setdata(stepheader,'stepheader' + dyCurrentAccIndex)
+        if (stepheader) $.setdata(stepheader,'stepheader' + prefix)
         $.log(`[${jsname}] 获取step请求: 成功,stepheader: ${stepheader}`)
         $.msg(`获取stepheader: 成功🎉`, ``)
         const stepkey = JSON.stringify($request.headers)
-        if(stepkey)        $.setdata(stepkey,'stepkey' + dyCurrentAccIndex)
+        if(stepkey)        $.setdata(stepkey,'stepkey' + prefix)
         $.log(`[${jsname}] 获取step请求: 成功,stepkey: ${stepkey}`)
         $.msg(`获取stepkey: 成功🎉`, ``)
     }
     if($request&&$request.url.indexOf("done/read")>=0) {
         const readheader = $request.url.split(`?`)[1]
-        if (readheader) $.setdata(readheader,'readheader' + dyCurrentAccIndex)
+        if (readheader) $.setdata(readheader,'readheader' + prefix)
         $.log(`[${jsname}] 获取read请求: 成功,readheader: ${readheader}`)
         $.msg(`获取readheader: 成功🎉`, ``)
         const readkey = JSON.stringify($request.headers)
-        if(readkey)        $.setdata(readkey,'readkey' + dyCurrentAccIndex)
+        if(readkey)        $.setdata(readkey,'readkey' + prefix)
         $.log(`[${jsname}] 获取read请求: 成功,readkey: ${readkey}`)
         $.msg(`获取readkey: 成功🎉`, ``)
     }
