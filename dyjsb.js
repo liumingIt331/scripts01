@@ -39,7 +39,7 @@ let isGetCookie = typeof $request !== 'undefined';
 let dyCurrentAccIndex = $.getdata('dyCurrentAccIndex') || "1"; // 默认账号一
 let dyTotalAcc = $.getdata('dyTotalAcc') || "1"; // 账号总数
 if (isGetCookie) {
-    GetCookie(dyCurrentAccIndex-1);
+    GetCookie(dyCurrentAccIndex);
     $.done()
 }
 if ($.isNode()) {
@@ -182,39 +182,39 @@ if ($.isNode()) {
     .finally(() => $.done())
 function GetCookie(dyCurrentAccIndex) {
     let prefix = '';
-    if (dyCurrentAccIndex > 0) {
-        prefix = dyCurrentAccIndex
+    if (dyCurrentAccIndex - 1 > 0) {
+        prefix = dyCurrentAccIndex - 1
     }
 
     if($request&&$request.url.indexOf("sign_in")>=0) {
         const signheader = $request.url.split(`?`)[1]
         if (signheader) $.setdata(signheader,'signheader' + prefix)
-        $.log(`[${jsname}] 账号${prefix} 获取sign请求: 成功,signheader: ${signheader}`)
-        $.msg(`账号${prefix} 获取signheader: 成功🎉`, ``)
+        $.log(`[${jsname}] 账号${dyCurrentAccIndex} 获取sign请求: 成功,signheader: ${signheader}`)
+        $.msg(`账号${dyCurrentAccIndex} 获取signheader: 成功🎉`, ``)
         const signcookie = $request.headers['Cookie']
         if(signcookie)        $.setdata(signcookie,'signcookie' + prefix)
-        $.log(`[${jsname}] 账号${prefix} 获取sign请求: 成功,signcookie: ${signcookie}`)
-        $.msg(`账号${prefix} 获取signcookie: 成功🎉`, ``)
+        $.log(`[${jsname}] 账号${dyCurrentAccIndex} 获取sign请求: 成功,signcookie: ${signcookie}`)
+        $.msg(`账号${dyCurrentAccIndex} 获取signcookie: 成功🎉`, ``)
     }
     if($request&&$request.url.indexOf("step_submit")>=0) {
         const stepheader = $request.url.split(`?`)[1]
         if (stepheader) $.setdata(stepheader,'stepheader' + prefix)
-        $.log(`[${jsname}] 账号${prefix} 获取step请求: 成功,stepheader: ${stepheader}`)
-        $.msg(`账号${prefix} 获取stepheader: 成功🎉`, ``)
+        $.log(`[${jsname}] 账号${dyCurrentAccIndex} 获取step请求: 成功,stepheader: ${stepheader}`)
+        $.msg(`账号${dyCurrentAccIndex} 获取stepheader: 成功🎉`, ``)
         const stepkey = JSON.stringify($request.headers)
         if(stepkey)        $.setdata(stepkey,'stepkey' + prefix)
-        $.log(`[${jsname}] 账号${prefix} 获取step请求: 成功,stepkey: ${stepkey}`)
-        $.msg(`账号${prefix} 获取stepkey: 成功🎉`, ``)
+        $.log(`[${jsname}] 账号${dyCurrentAccIndex} 获取step请求: 成功,stepkey: ${stepkey}`)
+        $.msg(`账号${dyCurrentAccIndex} 获取stepkey: 成功🎉`, ``)
     }
     if($request&&$request.url.indexOf("done/read")>=0) {
         const readheader = $request.url.split(`?`)[1]
         if (readheader) $.setdata(readheader,'readheader' + prefix)
-        $.log(`[${jsname}] 账号${prefix} 获取read请求: 成功,readheader: ${readheader}`)
-        $.msg(`账号${prefix} 获取readheader: 成功🎉`, ``)
+        $.log(`[${jsname}] 账号${dyCurrentAccIndex} 获取read请求: 成功,readheader: ${readheader}`)
+        $.msg(`账号${dyCurrentAccIndex} 获取readheader: 成功🎉`, ``)
         const readkey = JSON.stringify($request.headers)
         if(readkey)        $.setdata(readkey,'readkey' + prefix)
-        $.log(`[${jsname}] 账号${prefix} 获取read请求: 成功,readkey: ${readkey}`)
-        $.msg(`账号${prefix} 获取readkey: 成功🎉`, ``)
+        $.log(`[${jsname}] 账号${dyCurrentAccIndex} 获取read请求: 成功,readkey: ${readkey}`)
+        $.msg(`账号${dyCurrentAccIndex} 获取readkey: 成功🎉`, ``)
     }
 }
 async function control(){
