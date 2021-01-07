@@ -179,7 +179,7 @@ if ($.isNode()) {
 function GetCookie(hsCurrentAccIndex) {
     let suffix = '';
     if (hsCurrentAccIndex > 1) {
-        suffix = hsCurrentAccIndex + 1;
+        suffix = hsCurrentAccIndex;
     }
 
     if($request&&$request.url.indexOf("hotsoon"&&"sign_in_detail")>=0) {
