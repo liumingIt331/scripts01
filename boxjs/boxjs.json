@@ -7,7 +7,7 @@
   "apps": [
     {
       "id": "youth_multiple",
-      "name": "中青多账号管理",
+      "name": "中青多账号",
       "author": "@soso",
       "keys": [
         "youthheader_zq1",
@@ -70,7 +70,7 @@
     },
     {
       "id": "dyjsb_multiple",
-      "name": "抖音极速版多账号管理",
+      "name": "抖音极速版多账号",
       "author": "@soso",
       "keys": [
         "signheader",
@@ -128,6 +128,62 @@
       ],
       "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/dyjsb.js",
       "icons": ["https://raw.githubusercontent.com/liumingIt331/scripts01/master/img/dy.jpg", "https://raw.githubusercontent.com/liumingIt331/scripts01/master/img/dy.jpg"],
+      "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/dyjsb.js"
+    },
+    {
+      "id": "hotsoon_multiple",
+      "name": "火山极速版多账号",
+      "author": "@soso",
+      "keys": [
+        "hotsoonsignheader",
+        "hotsoonsignkey",
+        "hotsoonreadheader",
+        "hotsoonreadkey",
+        "hotsoonadheader",
+        "hotsoonadkey",
+        "hotsoonsignheader2",
+        "hotsoonsignkey2",
+        "hotsoonreadheader2",
+        "hotsoonreadkey2",
+        "hotsoonadheader2",
+        "hotsoonadkey2",
+        "hotsoonsignheader3",
+        "hotsoonsignkey3",
+        "hotsoonreadheader3",
+        "hotsoonreadkey3",
+        "hotsoonadheader3",
+        "hotsoonadkey3",
+        "hotsoonsignheader4",
+        "hotsoonsignkey4",
+        "hotsoonreadheader4",
+        "hotsoonreadkey4",
+        "hotsoonadheader4",
+        "hotsoonadkey4",
+        "hotsoonsignheader5",
+        "hotsoonsignkey5",
+        "hotsoonreadheader5",
+        "hotsoonreadkey5",
+        "hotsoonadheader5",
+        "hotsoonadkey5"
+      ],
+      "settings": [
+        {
+          "id": "hsCurrentAccIndex",
+          "name": "当前账号序号",
+          "val": "1",
+          "type": "number",
+          "desc": "需要获取第几个账号的Cookie就填写对应的数字，如第1个账号填写1，第2个账号就填写2，依次类推(默认从1开始)。"
+        },
+        {
+          "id": "hotsooncount",
+          "name": "账号总数",
+          "val": "1",
+          "type": "number",
+          "desc": "总共有几个账号，填写数字。"
+        }
+      ],
+      "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/dyjsb.js",
+      "icons": ["https://raw.githubusercontent.com/liumingIt331/scripts01/master/img/hs.jpg", "https://raw.githubusercontent.com/liumingIt331/scripts01/master/img/hs.jpg"],
       "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/dyjsb.js"
     }
   ]
