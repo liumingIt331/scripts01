@@ -7,6 +7,7 @@
     "*/20 * * * * * https://raw.githubusercontent.com/liumingIt331/scripts01/master/dyjsb.js, tag=抖音极速版, enabled=true",
     "*/30 * * * * * https://raw.githubusercontent.com/liumingIt331/scripts01/master/hotsoon.js, tag=火山极速版, enabled=true",
     "* */2 * * * * https://raw.githubusercontent.com/liumingIt331/scripts01/master/xiaopusign.js, tag=笑谱, img-url=https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/img/xp.png, enabled=true",
-    "30 * * * * https://raw.githubusercontent.com/shylocks/Loon/main/jd_gyec.js, tag=工业品爱消除, img-url=https://raw.githubusercontent.com/yogayyy/Scripts/main/Icon/shylock/jd_gyxxl.png, enabled=true"
+    "30 * * * * https://raw.githubusercontent.com/shylocks/Loon/main/jd_gyec.js, tag=工业品爱消除, img-url=https://raw.githubusercontent.com/yogayyy/Scripts/main/Icon/shylock/jd_gyxxl.png, enabled=true",
+    "0 8 * * * https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_nian.js, tag=京东炸年兽, img-url=https://raw.githubusercontent.com/yogayyy/Scripts/main/Icon/lxk0301/jd_nian.png"
   ]
 }
