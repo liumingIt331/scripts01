@@ -27,6 +27,7 @@ let notice = ''
 let cookiesArr = [], CookieVal = '';
 let bbbCurrentAccIndex = $.getdata('bbbCurrentAccIndex') || 1; // 默认账号一
 cookiesArr.push(...[$.getdata('bbb_ck'), $.getdata('bbb_ck2'), $.getdata('bbb_ck3'), $.getdata('bbb_ck4'), $.getdata('bbb_ck5')]);
+cookiesArr.push(...['{"store":"appstore","tokenstr":"0AB2A5FF1858D7B67D4C135AC525779G1611031638","Connection":"keep-alive","Accept-Encoding":"gzip, deflate, br","version":"10","idfa":"3823C175-CEBB-4170-A240-C6922AFC5E12","User-Agent":"BBB/132 CFNetwork/1209 Darwin/20.2.0","platform":"2","imei":"7A6DEAB1-A25B-4E62-B425-C181ED0A1E3F","Cookie":"PHPSESSID=k6ugkq7e8huvbqk8jvlh8d3sk6","Host":"bububao.duoshoutuan.com","Accept-Language":"zh-cn","Accept":"*/*","Content-Length":"0"}']);
 cookiesArr = cookiesArr.filter(item => item !== "" && item !== null && item !== undefined);
 
 if ($.isNode()) {
@@ -57,18 +58,18 @@ if (typeof $request !== 'undefined') {
                 $.msg($.name + $.index,"開始🎉🎉🎉")
 
                 await userInfo()
-                await signIn()
-                await checkWaterNum()
-                await zaoWanDkInfo()
-                await sleepStatus()
-                await clickTaskStatus()
-                await watchTaskStatus()
-                await helpStatus()
-                await getNewsId()
-                await checkWaterNum()
-                await getQuestionId()
-                await guaList()
-                await checkHomeJin()
+                // await signIn()
+                // await checkWaterNum()
+                // await zaoWanDkInfo()
+                // await sleepStatus()
+                // await clickTaskStatus()
+                // await watchTaskStatus()
+                // await helpStatus()
+                // await getNewsId()
+                // await checkWaterNum()
+                // await getQuestionId()
+                // await guaList()
+                // await checkHomeJin()
             }
         }
         await showmsg()
@@ -90,7 +91,43 @@ var getBoxId = (function () {
     };
 })();
 
+function tixian(username, money) {
 
+    let tixianJsonInfo = $.getdata(`tixian${$.index}`) ? JSON.parse($.getdata(`tixian${$.index}`)) : {};
+    if (tixianJsonInfo.time && tixianJsonInfo.money && (new Date(tixianJsonInfo.time).toDateString() === new Date().toDateString()) ) {
+        notice += `🎉提现情况(${tixianJsonInfo.money}): 今日已提现完成\n`
+        return;
+    }
+
+    if (money > 50) {
+        $.log('\n🎉开始提现50\n')
+        money = 50;
+    } else if (money > 1) {
+        $.log('\n🎉开始提现0.3\n')
+        money = 0.3;
+    }
+
+    return new Promise((resolve, reject) => {
+        let tixianInfo = {
+            url: 'https://bububao.duoshoutuan.com/user/tixian',
+            headers: JSON.parse(CookieVal),
+            body: `tx=${money}&=`,
+        }
+        $.post(tixianInfo, async (error, response, data) => {
+            const respInfo = JSON.parse(data)
+            if (response.statusCode == 200) {
+                $.log('🎉步步寶帳號: ' + username + ': ' + respInfo.msg + '\n')
+                notice += `🎉提现情况(${money}): ${respInfo.msg}\n`
+
+                var timestamp = new Date().getTime();
+                tixianJsonInfo.time = timestamp
+                tixianJsonInfo.money = money
+                $.getdata(JSON.stringify(tixianJsonInfo), `tixian${$.index}`)
+            }
+            resolve()
+        })
+    })
+}
 
 function userInfo() {
     return new Promise((resolve, reject) => {
@@ -104,6 +141,10 @@ function userInfo() {
             if(response.statusCode == 200 && userinfo.code != -1){
                 $.log('\n🎉模擬登陸成功\n')
                 notice += '🎉步步寶帳號: '+userinfo.username+'\n'+'🎉當前金幣: '+userinfo.jinbi+'💰 約'+userinfo.money+'元💸\n'
+
+                // 提现
+                tixian(userinfo.username, userinfo.money);
+
             }else{
                 notice += '⚠️異常原因: '+userinfo.msg+'\n'
             }
