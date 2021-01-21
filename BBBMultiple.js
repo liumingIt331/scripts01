@@ -69,9 +69,9 @@ if (typeof $request !== 'undefined') {
                 await getQuestionId()
                 await guaList()
                 await checkHomeJin()
-                await showmsg()
             }
         }
+        await showmsg()
     })()
         .catch((e) => $.logErr(e))
         .finally(() => $.done())
