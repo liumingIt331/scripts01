@@ -27,7 +27,7 @@ let notice = ''
 let cookiesArr = [], CookieVal = '';
 let bbbCurrentAccIndex = $.getdata('bbbCurrentAccIndex') || 1; // 默认账号一
 cookiesArr.push(...[$.getdata('bbb_ck'), $.getdata('bbb_ck2'), $.getdata('bbb_ck3'), $.getdata('bbb_ck4'), $.getdata('bbb_ck5')]);
-cookiesArr.push(...['{"store":"appstore","tokenstr":"0AB2A5FF1858D7B67D4C135AC525779G1611031638","Connection":"keep-alive","Accept-Encoding":"gzip, deflate, br","version":"10","idfa":"3823C175-CEBB-4170-A240-C6922AFC5E12","User-Agent":"BBB/132 CFNetwork/1209 Darwin/20.2.0","platform":"2","imei":"7A6DEAB1-A25B-4E62-B425-C181ED0A1E3F","Cookie":"PHPSESSID=k6ugkq7e8huvbqk8jvlh8d3sk6","Host":"bububao.duoshoutuan.com","Accept-Language":"zh-cn","Accept":"*/*","Content-Length":"0"}']);
+// cookiesArr.push(...['{"store":"appstore","tokenstr":"0AB2A5FF1858D7B67D4C135AC525779G1611031638","Connection":"keep-alive","Accept-Encoding":"gzip, deflate, br","version":"10","idfa":"3823C175-CEBB-4170-A240-C6922AFC5E12","User-Agent":"BBB/132 CFNetwork/1209 Darwin/20.2.0","platform":"2","imei":"7A6DEAB1-A25B-4E62-B425-C181ED0A1E3F","Cookie":"PHPSESSID=k6ugkq7e8huvbqk8jvlh8d3sk6","Host":"bububao.duoshoutuan.com","Accept-Language":"zh-cn","Accept":"*/*","Content-Length":"0"}']);
 cookiesArr = cookiesArr.filter(item => item !== "" && item !== null && item !== undefined);
 
 if ($.isNode()) {
