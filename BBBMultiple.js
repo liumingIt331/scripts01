@@ -70,7 +70,6 @@ if (typeof $request !== 'undefined') {
                 await guaList()
                 await checkHomeJin()
                 await showmsg()
-
             }
         }
     })()
@@ -81,7 +80,7 @@ if (typeof $request !== 'undefined') {
 
 
 function showmsg(){
-    $.msg($.name + $.index, '', notice)
+    $.msg($.name, '', notice)
 }
 
 var getBoxId = (function () {
