@@ -24,7 +24,7 @@ const $ = new Env('步步宝')
 let notice = ''
 
 // let CookieVal = $.getdata('bbb_ck')
-
+let cookiesArr = [];
 let bbbCurrentAccIndex = $.getdata('bbbCurrentAccIndex') || 1; // 默认账号一
 cookiesArr.push(...[$.getdata('bbb_ck5'), $.getdata('bbb_ck4'), $.getdata('bbb_ck3'), $.getdata('bbb_ck2'), $.getdata('bbb_ck')]);
 
