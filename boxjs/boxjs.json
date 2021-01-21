@@ -185,6 +185,29 @@
       "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/dyjsb.js",
       "icons": ["https://raw.githubusercontent.com/liumingIt331/scripts01/master/img/hs.jpg", "https://raw.githubusercontent.com/liumingIt331/scripts01/master/img/hs.jpg"],
       "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/dyjsb.js"
+    },
+    {
+      "id": "bbb_multiple",
+      "name": "步步宝多账号",
+      "author": "@soso",
+      "keys": [
+        "bbb_ck",
+        "bbb_ck2",
+        "bbb_ck3",
+        "bbb_ck4",
+        "bbb_ck5"
+      ],
+      "settings": [
+        {
+          "id": "bbbCurrentAccIndex",
+          "name": "当前账号序号",
+          "val": "1",
+          "type": "number",
+          "desc": "需要获取第几个账号的Cookie就填写对应的数字，如第1个账号填写1，第2个账号就填写2，依次类推(默认从1开始)。"
+        }
+      ],
+      "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/BBBMultiple.js",
+      "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/BBBMultiple.js"
     }
   ]
 }
