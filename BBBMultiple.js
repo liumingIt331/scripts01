@@ -47,7 +47,7 @@ if (typeof $request !== 'undefined') {
     }
 } else {
     !(async () => {
-
+        console.log(`\n******合计${cookiesArr.length}个账号*********\n`);
         for (let i = 0; i < cookiesArr.length; i++) {
             if (cookiesArr[i]) {
                 CookieVal = cookiesArr[i];
