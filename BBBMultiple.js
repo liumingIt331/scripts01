@@ -26,7 +26,8 @@ let notice = ''
 // let CookieVal = $.getdata('bbb_ck')
 let cookiesArr = [], CookieVal = '';
 let bbbCurrentAccIndex = $.getdata('bbbCurrentAccIndex') || 1; // 默认账号一
-cookiesArr.push(...[$.getdata('bbb_ck5'), $.getdata('bbb_ck4'), $.getdata('bbb_ck3'), $.getdata('bbb_ck2'), $.getdata('bbb_ck')]);
+cookiesArr.push(...[$.getdata('bbb_ck'), $.getdata('bbb_ck2'), $.getdata('bbb_ck3'), $.getdata('bbb_ck4'), $.getdata('bbb_ck5')]);
+cookiesArr = cookiesArr.filter(item => item !== "" && item !== null && item !== undefined);
 
 if ($.isNode()) {
     console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
@@ -52,9 +53,7 @@ if (typeof $request !== 'undefined') {
             if (cookiesArr[i]) {
                 CookieVal = cookiesArr[i];
                 $.index = i + 1;
-
-                console.log(`\n******开始【步步宝${$.index}】*********\n`);
-
+                
                 $.msg($.name + $.index,"開始🎉🎉🎉")
 
                 await userInfo()
