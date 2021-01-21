@@ -102,7 +102,7 @@ function tixian(username, money) {
     if (money > 50) {
         $.log('\n🎉开始提现50元\n')
         money = 50;
-    } else if (money > 1) {
+    } else if (money > 0.3) {
         $.log('\n🎉开始提现0.3元\n')
         money = 0.3;
     }
