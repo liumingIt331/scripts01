@@ -43,7 +43,7 @@ if (typeof $request !== 'undefined') {
         const CookieVal = JSON.stringify($request.headers)
         if(CookieVal)$.setdata(CookieVal,`bbb_ck${index}`)
         $.log(`CookieVal:${CookieVal}`)
-        $.msg($.name + `${index}`,"获取Cookie成功")
+        $.msg($.name + `${bbbCurrentAccIndex}`,"获取Cookie成功")
         $.done()
     }
 } else {
