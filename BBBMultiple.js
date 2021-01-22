@@ -91,44 +91,6 @@ var getBoxId = (function () {
     };
 })();
 
-function tixian(username, money) {
-
-    let tixianJsonInfo = $.getdata(`tixian${$.index}`) ? JSON.parse($.getdata(`tixian${$.index}`)) : {};
-    if (tixianJsonInfo.time && tixianJsonInfo.money && (new Date(tixianJsonInfo.time).toDateString() === new Date().toDateString()) ) {
-        notice += `🎉提现情况(${tixianJsonInfo.money}元): 今日已提现完成\n`
-        return;
-    }
-
-    if (money > 50) {
-        $.log('\n🎉开始提现50元\n')
-        money = 50;
-    } else if (money > 0.3) {
-        $.log('\n🎉开始提现0.3元\n')
-        money = 0.3;
-    }
-
-    return new Promise((resolve, reject) => {
-        let tixianInfo = {
-            url: 'https://bububao.duoshoutuan.com/user/tixian',
-            headers: JSON.parse(CookieVal),
-            body: `tx=${money}&=`,
-        }
-        $.post(tixianInfo, async (error, response, data) => {
-            const respInfo = JSON.parse(data)
-            if (response.statusCode == 200) {
-                $.log('🎉步步寶帳號: ' + username + ': ' + respInfo.msg + '\n')
-                notice += `🎉提现情况(${money}元): ${respInfo.msg}\n`
-
-                var timestamp = new Date().getTime();
-                tixianJsonInfo.time = timestamp
-                tixianJsonInfo.money = money
-                $.setdata(JSON.stringify(tixianJsonInfo), `tixian${$.index}`)
-            }
-            resolve()
-        })
-    })
-}
-
 function userInfo() {
     return new Promise((resolve, reject) => {
         let timestamp=new Date().getTime();
@@ -141,10 +103,6 @@ function userInfo() {
             if(response.statusCode == 200 && userinfo.code != -1){
                 $.log('\n🎉模擬登陸成功\n')
                 notice += '🎉步步寶帳號: '+userinfo.username+'\n'+'🎉當前金幣: '+userinfo.jinbi+'💰 約'+userinfo.money+'元💸\n'
-
-                // 提现
-                tixian(userinfo.username, userinfo.money);
-
             }else{
                 notice += '⚠️異常原因: '+userinfo.msg+'\n'
             }
