@@ -57,19 +57,22 @@ if (typeof $request !== 'undefined') {
                 
                 $.msg($.name + $.index,"開始🎉🎉🎉")
 
-                await userInfo()
+                await cashCheck()
                 await signIn()
                 await checkWaterNum()
                 await zaoWanDkInfo()
                 await sleepStatus()
                 await clickTaskStatus()
                 await watchTaskStatus()
-                await helpStatus()
+                //await helpStatus()
                 await getNewsId()
                 await checkWaterNum()
                 await getQuestionId()
                 await guaList()
+                await checkWaterNum()
                 await checkHomeJin()
+                await userInfo()
+                await showmsg()
             }
         }
         await showmsg()
@@ -77,8 +80,6 @@ if (typeof $request !== 'undefined') {
         .catch((e) => $.logErr(e))
         .finally(() => $.done())
 }
-
-
 
 function showmsg(){
     $.msg($.name, '', notice)
@@ -90,6 +91,8 @@ var getBoxId = (function () {
         return ++i;
     };
 })();
+
+
 
 function userInfo() {
     return new Promise((resolve, reject) => {
@@ -110,9 +113,6 @@ function userInfo() {
         })
     })
 }
-
-
-
 
 
 function signIn() {
@@ -167,7 +167,7 @@ function zaoWanDkInfo() {
         }
         $.post(zaowandkinfo,async(error, response, data) =>{
             const zwdkinfo = JSON.parse(data)
-            if(zwdkinfo.code == 1 && zwdkinfo.is_daka == 0) {
+            if(zwdkinfo.code == 1 && zwdkinfo.is_dk == 0) {
                 nowTime = zwdkinfo.now_time
                 title1 = zwdkinfo.title1
                 title2 = zwdkinfo.title2
@@ -212,7 +212,7 @@ function dkClick() {
             const clickdk = JSON.parse(data)
             if(clickdk.code == 1) {
                 $.log('\n🎉'+clickdk.msg+'+ '+clickdk.jinbi+'💰\n')
-                $.msg(`🎉${title1}\n${title2}💰`,'','')
+                $.msg(`${title1}`,`${title2}`,'')
                 await checkWaterNum()
             }else{
                 $.log('\n⚠️'+clickdk.msg)
@@ -235,14 +235,14 @@ function guaList() {
             $.log('\n🔔開始查詢刮刮卡ID\n')
             const guaid = JSON.parse(data)
             if(guaid.ka > 0){
-                for (guaId of guaid.list){
-                    if(guaId.is_ad == 0)
+                for (guaId of guaid.list)
+                    if(guaId.is_ad == 0){
                         GID = guaId.id
-                    $.log('\n🔔查詢刮刮卡ID成功,5s後開始查询刮卡签名\n')
-                    $.log('\nGID: '+GID+'\n')
-                    await $.wait(5000)
-                    await guaDet()
-                }}else{
+                        $.log('\n🔔查詢刮刮卡ID成功,5s後開始查询刮卡签名\n')
+                        $.log('\nGID: '+GID+'\n')
+                        await $.wait(5000)
+                        await guaDet()
+                    }}else{
                 $.log('\n⚠️刮刮卡已用完,請明天再刮吧！\n')
                 await checkWaterNum()
             }
@@ -421,7 +421,6 @@ function sleepStatus() {
             headers: JSON.parse(CookieVal),
         }
         $.post(sleepstatus,async(error, response, data) =>{
-            $.log(data)
             $.log('\n🔔開始查詢睡覺狀態\n')
             const slpstatus = JSON.parse(data)
             if(slpstatus.code == 1) {
@@ -1007,7 +1006,7 @@ function getNewsId() {
         $.post(getnewsid,async(error, response, data) =>{
             const newsid = JSON.parse(data)
             if(newsid.code == 1){
-                if(newsid.is_first == 1 && newsid.is_max == 0){
+                if(newsid.is_max == 0){
                     $.log('\n🔔開始查詢新聞ID\n')
                     newsStr = newsid.nonce_str
                     $.log('\n🎉新聞ID查詢成功,15s後領取閱讀獎勵\n')
@@ -1093,7 +1092,7 @@ function luckyClick() {
                     await $.wait(5000)
                     await luckyCallBack()
                 }else{
-                    await luckyClick()
+                    await checkLuckNum()
                 }
             }
             resolve()
@@ -1116,7 +1115,7 @@ function luckyCallBack() {
             if(callback.code == 1) {
                 $.log('\n🎉抽獎翻倍成功\n')
                 await $.wait(5000)
-                await luckyClick()
+                await checkLuckNum()
             }else{
                 $.log('\n⚠️抽獎翻倍失敗:'+callback.msg+'\n')
             }
@@ -1254,7 +1253,6 @@ function answerQue() {
             headers: JSON.parse(CookieVal),
             body: `cy_id=${questionId}&site=${questionSite}&`,
         }
-//$.log('\nanswerqueBODY:'+answerque.body+'\n')
         $.post(answerque,async(error, response, data) =>{
             const answer = JSON.parse(data)
             $.log('\n🔔開始答題\n')
@@ -1281,7 +1279,6 @@ function answerQueCallBack() {
             headers: JSON.parse(CookieVal),
             body: `nonce_str=${answerStr}&tid=18&pos=1&`,
         }
-//$.log('\nanswerQueCallBackBODY:'+answerquecallback.body+'\n')
         $.post(answerquecallback,async(error, response, data) =>{
             const answerback = JSON.parse(data)
             $.log('\n🔔開始翻倍答題金幣\n')
@@ -1296,6 +1293,58 @@ function answerQueCallBack() {
         })
     })
 }
+
+
+function cashCheck() {
+    return new Promise((resolve, reject) => {
+        let timestamp=new Date().getTime();
+        let cashcheck ={
+            url: 'https://bububao.duoshoutuan.com/user/profile',
+            headers: JSON.parse(CookieVal),
+        }
+        $.post(cashcheck,async(error, response, data) =>{
+            const cash = JSON.parse(data)
+            if(response.statusCode == 200 && cash.code != -1){
+                if(cash.jinbi >= 500000){
+                    tip = 50
+                    await withDraw()
+                }else if(cash.day_jinbi > 5000){
+                    tip = 0.3
+                    await withDraw()
+                }
+            }
+            resolve()
+        })
+    })
+}
+
+
+
+
+function withDraw() {
+    return new Promise((resolve, reject) => {
+        let timestamp=new Date().getTime();
+        let withdraw ={
+            url: `https://bububao.duoshoutuan.com/user/tixian?`,
+            headers: JSON.parse(CookieVal),
+            body: `tx=${tip}&`,
+        }
+        $.post(withdraw,async(error, response, data) =>{
+            $.log(data)
+            const draw = JSON.parse(data)
+            if(withdraw.code == 1) {
+                $.msg(draw.msg)
+            }else{
+                notice +=draw.tip+'\n'+draw.msg+'\n'
+            }
+            resolve()
+        })
+    })
+}
+
+
+
+
 
 
 
