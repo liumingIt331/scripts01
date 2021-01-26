@@ -72,7 +72,7 @@ if (typeof $request !== 'undefined') {
                 await checkWaterNum()
                 await checkHomeJin()
                 await userInfo()
-                await showmsg()
+                // await showmsg()
             }
         }
         await showmsg()
