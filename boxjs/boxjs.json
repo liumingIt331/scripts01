@@ -10,25 +10,22 @@
       "name": "中青多账号",
       "author": "@soso",
       "keys": [
+        "cashurl_zq",
+        "cashbody_zq",
         "youthheader_zq1",
-        "red_zq1",
-        "read_zq1",
+        "articlebodyVal1",
         "readtime_zq1",
         "youthheader_zq2",
-        "red_zq2",
-        "read_zq2",
+        "articlebodyVal2",
         "readtime_zq2",
         "youthheader_zq3",
-        "red_zq3",
-        "read_zq3",
+        "articlebodyVal3",
         "readtime_zq3",
         "youthheader_zq4",
-        "red_zq4",
-        "read_zq4",
+        "articlebodyVal4",
         "readtime_zq4",
         "youthheader_zq5",
-        "red_zq5",
-        "read_zq5",
+        "articlebodyVal5",
         "readtime_zq5"
       ],
       "settings": [
@@ -40,11 +37,32 @@
           "desc": "设定通知频率，前三次为全部通知，之后转盘次数/设定频率整除时通知，如设置0为无通知，设置1为全部通知，设置其他数可整除余0时通知，默认值50"
         },
         {
-          "id": "zqlogs",
-          "name": "调试日志",
+          "id": "zqtime",
+          "name": "打卡时间",
+          "val": "05",
+          "type": "text",
+          "desc": "打卡时间，默认5点"
+        },
+        {
+          "id": "zqcard",
+          "name": "早起打卡开关",
           "val": false,
           "type": "boolean",
-          "desc": "调试日志开关，默认关闭"
+          "desc": "打卡时间，默认5点"
+        },
+        {
+          "id": "withdrawcash",
+          "name": "提现金额",
+          "val": "30",
+          "type": "number",
+          "desc": "提现金额，默认30"
+        },
+        {
+          "id": "delay_rotary_zq",
+          "name": "转盘延迟时间",
+          "val": "10",
+          "type": "number",
+          "desc": "转盘延迟时间，默认10"
         },
         {
           "id": "currentAccIndex",
@@ -67,124 +85,6 @@
         "https://raw.githubusercontent.com/Orz-3/task/master/youth.png"
       ],
       "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/quantumultX/youth.js"
-    },
-    {
-      "id": "dyjsb_multiple",
-      "name": "抖音极速版多账号",
-      "author": "@soso",
-      "keys": [
-        "signheader",
-        "signcookie",
-        "stepheader",
-        "stepkey",
-        "readheader",
-        "readkey",
-        "signheader1",
-        "signcookie1",
-        "stepheader1",
-        "stepkey1",
-        "readheader1",
-        "readkey1",
-        "signheader2",
-        "signcookie2",
-        "stepheader2",
-        "stepkey2",
-        "readheader2",
-        "readkey2",
-        "signheader3",
-        "signcookie3",
-        "stepheader3",
-        "stepkey3",
-        "readheader3",
-        "readkey3",
-        "signheader4",
-        "signcookie4",
-        "stepheader4",
-        "stepkey4",
-        "readheader4",
-        "readkey4",
-        "signheader5",
-        "signcookie5",
-        "stepheader5",
-        "stepkey5",
-        "readheader5",
-        "readkey5"
-      ],
-      "settings": [
-        {
-          "id": "dyCurrentAccIndex",
-          "name": "当前账号序号",
-          "val": "1",
-          "type": "number",
-          "desc": "需要获取第几个账号的Cookie就填写对应的数字，如第1个账号填写1，第2个账号就填写2，依次类推(默认从1开始)。"
-        },
-        {
-          "id": "dyTotalAcc",
-          "name": "账号总数",
-          "val": "1",
-          "type": "number",
-          "desc": "总共有几个账号，填写数字。"
-        }
-      ],
-      "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/dyjsb.js",
-      "icons": ["https://raw.githubusercontent.com/liumingIt331/scripts01/master/img/dy.jpg", "https://raw.githubusercontent.com/liumingIt331/scripts01/master/img/dy.jpg"],
-      "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/dyjsb.js"
-    },
-    {
-      "id": "hotsoon_multiple",
-      "name": "火山极速版多账号",
-      "author": "@soso",
-      "keys": [
-        "hotsoonsignheader",
-        "hotsoonsignkey",
-        "hotsoonreadheader",
-        "hotsoonreadkey",
-        "hotsoonadheader",
-        "hotsoonadkey",
-        "hotsoonsignheader2",
-        "hotsoonsignkey2",
-        "hotsoonreadheader2",
-        "hotsoonreadkey2",
-        "hotsoonadheader2",
-        "hotsoonadkey2",
-        "hotsoonsignheader3",
-        "hotsoonsignkey3",
-        "hotsoonreadheader3",
-        "hotsoonreadkey3",
-        "hotsoonadheader3",
-        "hotsoonadkey3",
-        "hotsoonsignheader4",
-        "hotsoonsignkey4",
-        "hotsoonreadheader4",
-        "hotsoonreadkey4",
-        "hotsoonadheader4",
-        "hotsoonadkey4",
-        "hotsoonsignheader5",
-        "hotsoonsignkey5",
-        "hotsoonreadheader5",
-        "hotsoonreadkey5",
-        "hotsoonadheader5",
-        "hotsoonadkey5"
-      ],
-      "settings": [
-        {
-          "id": "hsCurrentAccIndex",
-          "name": "当前账号序号",
-          "val": "1",
-          "type": "number",
-          "desc": "需要获取第几个账号的Cookie就填写对应的数字，如第1个账号填写1，第2个账号就填写2，依次类推(默认从1开始)。"
-        },
-        {
-          "id": "hotsooncount",
-          "name": "账号总数",
-          "val": "1",
-          "type": "number",
-          "desc": "总共有几个账号，填写数字。"
-        }
-      ],
-      "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/dyjsb.js",
-      "icons": ["https://raw.githubusercontent.com/liumingIt331/scripts01/master/img/hs.jpg", "https://raw.githubusercontent.com/liumingIt331/scripts01/master/img/hs.jpg"],
-      "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/dyjsb.js"
     },
     {
       "id": "bbb_multiple",
