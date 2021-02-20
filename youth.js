@@ -85,6 +85,10 @@ bjTime = new Date(timestamp).toLocaleString('zh', {hour12: false, timeZoneName: 
 console.log(`\n === 脚本执行 ${bjTime} ===\n`);
 console.log(` =========== 您共提供${cookiesArr.length}个中青账号 ==========`);
 
+let firstcheck;
+let runtimes;
+let opboxtime;
+
 if (isGetCookie = typeof $request !== 'undefined') {
     GetCookie();
     $.done()
@@ -104,6 +108,11 @@ if (isGetCookie = typeof $request !== 'undefined') {
             $.index = i + 1;
             console.log(`-------------------------\n\n开始【中青看点${$.index}】`)
         }
+
+        firstcheck = $.getdata('signt' + $.index);
+        runtimes = $.getdata('times' + $.index);
+        opboxtime = $.getdata('opbox' + $.index);
+
         await sign();
         await signInfo();
         await friendsign();
