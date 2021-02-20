@@ -36,18 +36,17 @@
           "type": "number",
           "desc": "设定通知频率，前三次为全部通知，之后转盘次数/设定频率整除时通知，如设置0为无通知，设置1为全部通知，设置其他数可整除余0时通知，默认值50"
         },
+         {
+          "id": "zqcard",
+          "name": "早起打卡开关",
+          "val": false,
+          "type": "boolean"
+        },
         {
           "id": "zqtime",
           "name": "打卡时间",
           "val": "05",
           "type": "text",
-          "desc": "打卡时间，默认5点"
-        },
-        {
-          "id": "zqcard",
-          "name": "早起打卡开关",
-          "val": false,
-          "type": "boolean",
           "desc": "打卡时间，默认5点"
         },
         {
