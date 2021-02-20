@@ -15,6 +15,8 @@ let withdrawBody = $.getdata('cashbody_zq');
 let cardTime = $.getdata('zqtime') || "05";//打卡时间
 let rotaryscore = 0, doublerotary = 0;
 
+let nick = '';
+
 $.idx = ($.getval('currentAccIndex') || '1'); // 账号扩展字符
 
 let cookieArr = [], cookie = '',
