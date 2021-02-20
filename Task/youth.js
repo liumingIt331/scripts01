@@ -20,7 +20,8 @@ $.idx = ($.getval('currentAccIndex') || '1'); // 账号扩展字符
 let cookieArr = [], cookie = '',
     readArr = [], articlebodyVal = '',
     timeArr = [], timebodyVal = '',
-    detail = ``, subTitle = ``;
+    detail = ``, subTitle = ``,
+    nick = ``, cash = ``;
 
 let cookieYouth = [], ARTBODYs = [], READTIME = [];
 
@@ -74,6 +75,10 @@ if ($.isNode()) {
         timeArr.push($.getdata(`readtime_zq${i}`));
     }
 }
+
+cookieArr = ['{"Accept-Encoding":"gzip, deflate, br","Cookie":"sensorsdata2019jssdkcross=%7B%22distinct_id%22%3A%2247269614%22%2C%22%24device_id%22%3A%221760cac5390762-00cfa82f4d4be8-3c176b50-250125-1760cac5391827%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_referrer%22%3A%22%22%2C%22%24latest_referrer_host%22%3A%22%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%7D%2C%22first_id%22%3A%221760cac5390762-00cfa82f4d4be8-3c176b50-250125-1760cac5391827%22%7D; Hm_lvt_268f0a31fc0d047e5253dd69ad3a4775=1607239064,1607250626,1607250880,1607424954; Hm_lvt_6c30047a5b80400b0fd3f410638b8f0c=1607058449,1607058483","Connection":"keep-alive","Referer":"https://kd.youth.cn/html/taskCenter/index.html?uuid=ce74307c8300fa1b6cae65bab63da867&sign=2677c7218878a615314677ffee3681fb&channel_code=80000000&uid=47269614&channel=80000000&access=WIfI&app_version=1.7.9&device_platform=iphone&cookie_id=f23f7b83f6855bd74463bd14ce2af848&openudid=ce74307c8300fa1b6cae65bab63da867&device_type=1&device_brand=iphone&sm_device_id=20190430221838227f2d7872c35bd6a79132b61957cee101f7f3b0cd6a8bf3&version_code=179&os_version=13.6.1&cookie=MDAwMDAwMDAwMJCMpN-w09Wtg5-Bb36eh6CPqHualq2jmrCarWKx3X1rhoyO3q-oqmqXr6NthJl7mI-shMmXeqDau4StacS3o7GFonaZr8-2ZYOJm7KEY2Ft&device_model=iPhone_6&subv=1.5.1&&cookie=MDAwMDAwMDAwMJCMpN-w09Wtg5-Bb36eh6CPqHualq2jmrCarWKx3X1rhoyO3q-oqmqXr6NthJl7mI-shMmXeqDau4StacS3o7GFonaZr8-2ZYOJm7KEY2Ft&cookie_id=f23f7b83f6855bd74463bd14ce2af848","Accept":"*/*","Host":"kd.youth.cn","User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148","Accept-Language":"zh-cn","X-Requested-With":"XMLHttpRequest"}'];
+readArr = ['p=9NwGV8Ov71o%3DgW5NEpb6rjb84bkaCQyOq-myT0C-Ktb_lgXXENBlMWjgdt2eFsJi4FV71nWDXdXT6C5gioHBTSn7rK0dXFkhDeJIZ5oDXpx9Vt3jnAJ4AwMkOK-OCcx0IflI9Z3ixeEvV284ONFvvktkFa9VEcsPdQR1YwXfcKpDcqzkFTEBdQU2fWKjy0TxL49mKLwT7nCeEWEOqXtxP4qi3Cym3GipOxTBuaEHzPmbUAMPV02OnBqN78U8vXAQPqNLx9aByHOR2C4nZfgjmbcJJlWsbE02wHYA77NuZD-Scv_KSKgr4gxvs_6gEFK63LeklGBXTNYEyosPNGgDLMIe_PPm3JsmjPUQeKOVXqDq4piun1U8j-5ho_e0iZqt6LJ2Vx4FUiidxSVLzdU1CcqJ1TJzo9G7iPPv29M_8B2zs47NItS-PjXuG8GrGKgVru4iUkxMPyzkaywv71jSLq8RGWtdRLPylmxWo_4OBdlcJ4ckpGLT7H8m4WIWHr7OOjLDb8ZiE4uJDt7juTpHnNUd4cJfR8Udzx8YLe02hwWmGVH6ned2At8QdAARpXqjKuwjpIiyBDaRh2kZJwC9Dm4xcWuAT3136Hb2Y98rylHm5zUo8tvD-bUONLANzHRQzKd15uJ3Qvyq060iSjqvJgNkGppbOkXZWNABdmDoIYn4IcWEmfSV6aFDM0t5APqgBgeIHyYGS7clvMQaTEIhprpcDxqZcOWY9OU5C0-zGhfoSZysbC81TpAIR-MJS5KUznCMtgK82xHsNfxyUgIxREzLVcAC3w3ash5rKMQ-L6SP6bhB4fHksBa6JTnsDN1Fh0md1yugGLemz0YnWf-b3GT65jMpCEzgrg%3D%3D'];
+timeArr = ['p=9NwGV8Ov71o%3DgW5NEpb6rjb84bkaCQyOq-myT0C-Ktb_lgXXENBlMWjgdt2eFsJi4FV71nWDXdXT6C5gioHBTSn7rK0dXFkhDeJIZ5oDXpx9Vt3jnAJ4AwMkOK-OCcx0IflI9Z3ixeEvV284ONFvvktkFa9VEcsPdQR1YwXfcKpDcqzkFTEBdQU2fWKjy0TxL49mKLwT7nCeEWEOqXtxP4qi3Cym3GipOxTBuaEHzPmbUAMPV02OnBqN78U8vXAQPqNLx9aByHORD7D_Kq0Akty-o44-lqaS2KEkkhKB0oksFxiGr4UOFh6SiUJsAzlWeUlertKwZOFC7i_jsZ2jh_BnHTosnTXSa92jcDHoa_OtZZpMrz8k0h_Y8llL_M9HZPUwmp6s2L12Q3p2J1Zc9YuYa9j6WRvVdgOn9JBshA3WzrpOyWtOkklY-2CH7DKN_naBrlZ8V7FMMpl-6RscuCbWwCWS5augGorRCZWu7vT_tZGNXis3TKsDhWbedw6xRoGHX7EiSzIp2ULh9NRh8AvrwvTtGRzse3lLkm-WzxaMb6aTSjkufWnIleBKelVTKEnJ8OwpYJr7EKikyH2YsA7X2mE8Jrilyi-emvHXJ6W4DGZrPbHyg3zkwyTvJsTUhpefZhNuzsJY0FHGH_LFLyC1eO18M5rJ-4Ydtd6oBVKdzWD7Ny1wUo2WlBCv2zz_VfE_JgTYy47rNkCtjXLzUDKKEO7kMvEs0sFUKzvJ1IOCGjt0Lq5iy9RmbfVnGo6lvlUfHksypaaHMeYXOErsuR-krioAZtOc4WmYWzPel7ANHdGa53UrgcEIiLF--QvXaV-6cE1ZOVTy'];
 
 timeZone = new Date().getTimezoneOffset() / 60;
 timestamp = Date.now() + (8 + timeZone) * 60 * 60 * 1000;
@@ -272,7 +277,7 @@ function artshare(artsid) {
 
 function userInfo() {
     return new Promise((resolve, reject) => {
-        $.post(kdHost('WebApi/NewTaskIos/getSign'), async (error, resp, data) => {
+        $.post(kdHost('WebApi/NewTaskIos/getSign', cookie), async (error, resp, data) => {
             signinfo = JSON.parse(data);
             if (signinfo.status == 1) {
                 cash = signinfo.data.user.money;
