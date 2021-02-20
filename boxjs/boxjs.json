@@ -10,21 +10,24 @@
       "name": "中青多账号",
       "author": "@soso",
       "keys": [
-        "cashurl_zq",
-        "cashbody_zq",
         "youthheader_zq1",
+        "red_zq1",
         "read_zq1",
         "readtime_zq1",
         "youthheader_zq2",
+        "red_zq2",
         "read_zq2",
         "readtime_zq2",
         "youthheader_zq3",
+        "red_zq3",
         "read_zq3",
         "readtime_zq3",
         "youthheader_zq4",
+        "red_zq4",
         "read_zq4",
         "readtime_zq4",
         "youthheader_zq5",
+        "red_zq5",
         "read_zq5",
         "readtime_zq5"
       ],
@@ -36,32 +39,12 @@
           "type": "number",
           "desc": "设定通知频率，前三次为全部通知，之后转盘次数/设定频率整除时通知，如设置0为无通知，设置1为全部通知，设置其他数可整除余0时通知，默认值50"
         },
-         {
-          "id": "zqcard",
-          "name": "早起打卡开关",
+        {
+          "id": "zqlogs",
+          "name": "调试日志",
           "val": false,
-          "type": "boolean"
-        },
-        {
-          "id": "zqtime",
-          "name": "打卡时间",
-          "val": "05",
-          "type": "text",
-          "desc": "打卡时间，默认5点"
-        },
-        {
-          "id": "withdrawcash",
-          "name": "提现金额",
-          "val": "30",
-          "type": "number",
-          "desc": "提现金额，默认30"
-        },
-        {
-          "id": "delay_rotary_zq",
-          "name": "转盘延迟时间",
-          "val": "10",
-          "type": "number",
-          "desc": "转盘延迟时间，默认10"
+          "type": "boolean",
+          "desc": "调试日志开关，默认关闭"
         },
         {
           "id": "currentAccIndex",
@@ -78,12 +61,12 @@
           "desc": "总共有几个账号，填写数字。"
         }
       ],
-      "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/quantumultX/youth.js",
+      "repo": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/youth.js",
       "icons": [
         "https://raw.githubusercontent.com/Orz-3/mini/master/youth.png",
         "https://raw.githubusercontent.com/Orz-3/task/master/youth.png"
       ],
-      "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/quantumultX/youth.js"
+      "script": "https://raw.githubusercontent.com/liumingIt331/scripts01/master/youth.js"
     },
     {
       "id": "bbb_multiple",
