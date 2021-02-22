@@ -21,26 +21,26 @@ let CookieYouth = [], ARTBODYs = [],
 $.idx = ($.getval('currentAccIndex') || '1'); // 账号扩展字符
 
 if ($.isNode()) {
-    if (process.env.YOUTH_HEADER && process.env.YOUTH_HEADER.indexOf('#') > -1) {
-        CookieYouth = process.env.YOUTH_HEADER.split('#');
+    if (process.env.YOUTH_HEADER && process.env.YOUTH_HEADER.indexOf('\n') > -1) {
+        CookieYouth = process.env.YOUTH_HEADER.split('\n');
     } else {
         CookieYouth = process.env.YOUTH_HEADER.split()
     }
 
-    if (process.env.YOUTH_ARTBODY && process.env.YOUTH_ARTBODY.indexOf('&') > -1) {
-        ARTBODYs = process.env.YOUTH_ARTBODY.split('&');
+    if (process.env.YOUTH_ARTBODY && process.env.YOUTH_ARTBODY.indexOf('\n') > -1) {
+        ARTBODYs = process.env.YOUTH_ARTBODY.split('\n');
     } else {
         ARTBODYs = process.env.YOUTH_ARTBODY.split()
     }
 
-    if (process.env.YOUTH_REDBODY && process.env.YOUTH_REDBODY.indexOf('&') > -1) {
-        REDBODYs = process.env.YOUTH_REDBODY.split('&');
+    if (process.env.YOUTH_REDBODY && process.env.YOUTH_REDBODY.indexOf('\n') > -1) {
+        REDBODYs = process.env.YOUTH_REDBODY.split('\n');
     } else {
         REDBODYs = process.env.YOUTH_REDBODY.split()
     }
 
-    if (process.env.YOUTH_TIME && process.env.YOUTH_TIME.indexOf('&') > -1) {
-        READTIME = process.env.YOUTH_TIME.split('&');
+    if (process.env.YOUTH_TIME && process.env.YOUTH_TIME.indexOf('\n') > -1) {
+        READTIME = process.env.YOUTH_TIME.split('\n');
     }else {
         READTIME = process.env.YOUTH_TIME.split()
     }
