@@ -37,7 +37,7 @@ jobs:
         if: env.YOUTH_HEADER
         run: |
           cd ~/scripts01
-          node Task/youth.js
+          node youth.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
