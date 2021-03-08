@@ -4,6 +4,6 @@
   "task": [
     "*/5 5-21 * * * https://raw.githubusercontent.com/liumingIt331/scripts01/master/youth.js, tag=中青多账号, img-url=https://raw.githubusercontent.com/Orz-3/task/master/youth.png, enabled=false",
     "0 8-23/2 * * * https://raw.githubusercontent.com/liumingIt331/scripts01/master/BBBMultiple.js, tag=步步宝多账号, enabled=true",
-    "0,30 0-23 * * * https://raw.githubusercontent.com/ziye11/JavaScript/main/Task/bububao.js, tag=步步宝ZIYE, enabled=true"
+    "0,30 0-23 * * * https://raw.githubusercontent.com/liumingIt331/sync_ziye/ZIYE/Task/bububao.js, tag=步步宝ZIYE, enabled=true"
   ]
 }
