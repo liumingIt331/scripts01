@@ -3,7 +3,7 @@
   "description": "收集各个圈x脚本作者的task库，感谢各位大佬的辛勤付出",
   "task": [
     "*/5 5-21 * * * https://raw.githubusercontent.com/liumingIt331/scripts01/master/youth.js, tag=中青多账号, img-url=https://raw.githubusercontent.com/Orz-3/task/master/youth.png, enabled=false",
-    "0 8-23/2 * * * https://raw.githubusercontent.com/liumingIt331/scripts01/master/BBBMultiple.js, tag=步步宝多账号, enabled=true",
-    "0,30 0-23 * * * https://raw.githubusercontent.com/liumingIt331/sync_ziye/ZIYE/Task/bububao.js, tag=步步宝ZIYE, enabled=true"
+    "*/10 4-21 * * * https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/iboxpay.js, tag=笑谱, enabled=true",
+    "0,30 0-23 * * * https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/bububao.js, tag=步步宝, enabled=true"
   ]
 }
